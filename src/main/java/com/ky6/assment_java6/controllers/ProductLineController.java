@@ -35,15 +35,13 @@ public class ProductLineController {
 
     @PutMapping("admin/productLine/update-product-line")
     public ResponseEntity<ProductLine> updateProductLine(@RequestBody ProductLine pro){
-        System.out.println("idpr:"+pro.getIdPl()+", name: "+pro.getNameProductLine());
         productLineService.save(pro);
         return new ResponseEntity<>(pro, HttpStatus.OK);
     }
 
     @DeleteMapping("admin/productLine/delete/{id}")
-    public ResponseEntity<?> deleteProductLine(@PathVariable("id") Long id){
-        Optional<ProductLine> productLine = productLineService.findById(id);
-        productLineService.deleteById(id);
-        return new ResponseEntity<>(productLine.get(),HttpStatus.OK);
+    public ResponseEntity<?> deleteProductLine(@PathVariable(name = "id") String id){
+        productLineService.deleteById(Integer.parseInt(id));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

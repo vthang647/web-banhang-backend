@@ -21,7 +21,6 @@ public class ProductRepositoryImp implements ProductService {
     @Autowired
     ProductRepository productRepository;
 
-
     @Override
     public List<Products> findAll() {
         return productRepository.findAll();
@@ -31,8 +30,8 @@ public class ProductRepositoryImp implements ProductService {
         return productRepository.findAll(sort);
     }
 
-    public List<Products> findAllById(Iterable<Long> longs) {
-        return productRepository.findAllById(longs);
+    public List<Products> findAllById(Iterable<Integer> integers) {
+        return productRepository.findAllById(integers);
     }
 
     public <S extends Products> List<S> saveAll(Iterable<S> entities) {
@@ -60,8 +59,8 @@ public class ProductRepositoryImp implements ProductService {
         productRepository.deleteAllInBatch(entities);
     }
 
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-        productRepository.deleteAllByIdInBatch(longs);
+    public void deleteAllByIdInBatch(Iterable<Integer> integers) {
+        productRepository.deleteAllByIdInBatch(integers);
     }
 
     public void deleteAllInBatch() {
@@ -69,17 +68,18 @@ public class ProductRepositoryImp implements ProductService {
     }
 
     @Deprecated
-    public Products getOne(Long aLong) {
-        return productRepository.getOne(aLong);
+    public Products getOne(Integer integer) {
+        return productRepository.getOne(integer);
     }
 
+    @Override
     @Deprecated
-    public Products getById(Long aLong) {
-        return productRepository.getById(aLong);
+    public Products getById(Integer integer) {
+        return productRepository.getById(integer);
     }
 
-    public Products getReferenceById(Long aLong) {
-        return productRepository.getReferenceById(aLong);
+    public Products getReferenceById(Integer integer) {
+        return productRepository.getReferenceById(integer);
     }
 
     public <S extends Products> List<S> findAll(Example<S> example) {
@@ -100,28 +100,31 @@ public class ProductRepositoryImp implements ProductService {
     }
 
     @Override
-    public Optional<Products> findById(Long aLong) {
-        return productRepository.findById(aLong);
+    public Optional<Products> findById(Integer integer) {
+        return productRepository.findById(integer);
     }
 
-    public boolean existsById(Long aLong) {
-        return productRepository.existsById(aLong);
+    @Override
+    public boolean existsById(Integer integer) {
+        return productRepository.existsById(integer);
     }
 
+    @Override
     public long count() {
         return productRepository.count();
     }
 
-    public void deleteById(Long aLong) {
-        productRepository.deleteById(aLong);
+    @Override
+    public void deleteById(Integer integer) {
+        productRepository.deleteById(integer);
     }
 
     public void delete(Products entity) {
         productRepository.delete(entity);
     }
 
-    public void deleteAllById(Iterable<? extends Long> longs) {
-        productRepository.deleteAllById(longs);
+    public void deleteAllById(Iterable<? extends Integer> integers) {
+        productRepository.deleteAllById(integers);
     }
 
     public void deleteAll(Iterable<? extends Products> entities) {

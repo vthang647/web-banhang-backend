@@ -11,7 +11,16 @@ public interface ProductService {
 
     List<Products> findAll();
 
+    @Deprecated
+    Products getById(Integer integer);
+
     <S extends Products> S save(S entity);
 
-    Optional<Products> findById(Long aLong);
+    Optional<Products> findById(Integer integer);
+
+    boolean existsById(Integer integer);
+
+    long count();
+
+    void deleteById(Integer integer);
 }

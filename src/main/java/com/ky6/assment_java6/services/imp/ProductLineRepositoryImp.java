@@ -29,8 +29,8 @@ public class ProductLineRepositoryImp implements ProductLineService {
         return productLineRepository.findAll(sort);
     }
 
-    public List<ProductLine> findAllById(Iterable<Long> longs) {
-        return productLineRepository.findAllById(longs);
+    public List<ProductLine> findAllById(Iterable<Integer> integers) {
+        return productLineRepository.findAllById(integers);
     }
 
     public <S extends ProductLine> List<S> saveAll(Iterable<S> entities) {
@@ -58,8 +58,8 @@ public class ProductLineRepositoryImp implements ProductLineService {
         productLineRepository.deleteAllInBatch(entities);
     }
 
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-        productLineRepository.deleteAllByIdInBatch(longs);
+    public void deleteAllByIdInBatch(Iterable<Integer> integers) {
+        productLineRepository.deleteAllByIdInBatch(integers);
     }
 
     public void deleteAllInBatch() {
@@ -67,17 +67,17 @@ public class ProductLineRepositoryImp implements ProductLineService {
     }
 
     @Deprecated
-    public ProductLine getOne(Long aLong) {
-        return productLineRepository.getOne(aLong);
+    public ProductLine getOne(Integer integer) {
+        return productLineRepository.getOne(integer);
     }
 
     @Deprecated
-    public ProductLine getById(Long aLong) {
-        return productLineRepository.getById(aLong);
+    public ProductLine getById(Integer integer) {
+        return productLineRepository.getById(integer);
     }
 
-    public ProductLine getReferenceById(Long aLong) {
-        return productLineRepository.getReferenceById(aLong);
+    public ProductLine getReferenceById(Integer integer) {
+        return productLineRepository.getReferenceById(integer);
     }
 
     public <S extends ProductLine> List<S> findAll(Example<S> example) {
@@ -98,13 +98,13 @@ public class ProductLineRepositoryImp implements ProductLineService {
     }
 
     @Override
-    public Optional<ProductLine> findById(Long aLong) {
-        return productLineRepository.findById(aLong);
+    public Optional<ProductLine> findById(Integer integer) {
+        return productLineRepository.findById(integer);
     }
 
     @Override
-    public boolean existsById(Long aLong) {
-        return productLineRepository.existsById(aLong);
+    public boolean existsById(Integer integer) {
+        return productLineRepository.existsById(integer);
     }
 
     public long count() {
@@ -112,16 +112,16 @@ public class ProductLineRepositoryImp implements ProductLineService {
     }
 
     @Override
-    public void deleteById(Long aLong) {
-        productLineRepository.deleteById(aLong);
+    public void deleteById(Integer integer) {
+        productLineRepository.deleteById(integer);
     }
 
     public void delete(ProductLine entity) {
         productLineRepository.delete(entity);
     }
 
-    public void deleteAllById(Iterable<? extends Long> longs) {
-        productLineRepository.deleteAllById(longs);
+    public void deleteAllById(Iterable<? extends Integer> integers) {
+        productLineRepository.deleteAllById(integers);
     }
 
     public void deleteAll(Iterable<? extends ProductLine> entities) {

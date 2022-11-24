@@ -15,7 +15,7 @@ public class Products {
     @Id
     @Column(name = "id_sp", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSp;
+    private Integer idSp;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pl")

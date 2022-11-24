@@ -14,7 +14,7 @@ public class ProductLine {
     @Id
     @Column(name = "id_pl", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPl;
+    private Integer idPl;
 
     @Nationalized
     @Column(name = "name_product_line", length = 50)
