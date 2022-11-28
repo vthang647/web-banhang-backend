@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,42 @@ import java.util.function.Function;
 public class ProductRepositoryImp implements ProductService {
     @Autowired
     ProductRepository productRepository;
+
+    @Override
+    @Query(value = "select * from products where name_product like %:keyword%", nativeQuery = true)
+    public List<Products> findBynameProduct(String keyword) {
+        return productRepository.findBynameProduct(keyword);
+    }
+
+    @Override
+    @Query(value = "select * from products where id_pl=:idPl", nativeQuery = true)
+    public List<Products> findProductByPl(String idpl) {
+        return productRepository.findProductByPl(idpl);
+    }
+
+    @Override
+    @Query(value = "select * from products where id_pl=:idpl order by price ASC", nativeQuery = true)
+    public List<Products> sorfByPriceUP(String idpl) {
+        return productRepository.sorfByPriceUP(idpl);
+    }
+
+    @Override
+    @Query(value = "select * from products where id_pl=:idpl order by price DESC", nativeQuery = true)
+    public List<Products> sorfByPriceDOWN(String idpl) {
+        return productRepository.sorfByPriceDOWN(idpl);
+    }
+
+    @Override
+    @Query(value = "select * from products order by price ASC", nativeQuery = true)
+    public List<Products> sorfByPriceProductAllUp() {
+        return productRepository.sorfByPriceProductAllUp();
+    }
+
+    @Override
+    @Query(value = "select * from products order by price DESC", nativeQuery = true)
+    public List<Products> sorfByPriceProductAllDown() {
+        return productRepository.sorfByPriceProductAllDown();
+    }
 
     @Override
     public List<Products> findAll() {

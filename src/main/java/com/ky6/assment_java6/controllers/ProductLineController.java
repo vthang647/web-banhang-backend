@@ -27,6 +27,12 @@ public class ProductLineController {
         return productLineService.findAll();
     }
 
+    @GetMapping("admin/productLine/findProductLineByID/{id}")
+    public ResponseEntity<ProductLine> findProductLineById(@PathVariable(name = "id") String id){
+        Optional<ProductLine> productLine = productLineService.findById(Integer.parseInt(id));
+        return new ResponseEntity<>(productLine.get(), HttpStatus.OK);
+    }
+
     @PostMapping("admin/productLine/add-product-line")
     public ResponseEntity<ProductLine> addNewProductLine(@RequestBody ProductLine pro){
         productLineService.save(pro);
