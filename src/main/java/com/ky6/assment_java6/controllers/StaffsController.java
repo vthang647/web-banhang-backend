@@ -18,7 +18,14 @@ public class StaffsController {
 
     @GetMapping("/admin/staffs/getAll")
     public ResponseEntity<List<Staff>> getAllStaff(){
+        System.out.println("get all: "+ staffsService.findAll().get(0).getNameStaff());
         return new ResponseEntity<>(staffsService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/admin/staffs/getStaffsByName/{nameStaff}")
+    public ResponseEntity<Staff> getStaffByNAme(@PathVariable(name = "nameStaff") String nameStaff){
+        Staff staff = staffsService.findByUsername(nameStaff);
+        return new ResponseEntity<>(staff, HttpStatus.OK);
     }
 
     @PostMapping("/admin/staffs/add")

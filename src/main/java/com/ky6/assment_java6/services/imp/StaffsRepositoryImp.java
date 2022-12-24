@@ -3,11 +3,15 @@ package com.ky6.assment_java6.services.imp;
 import com.ky6.assment_java6.entities.Staff;
 import com.ky6.assment_java6.repositories.StaffsRepository;
 import com.ky6.assment_java6.services.StaffsService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +19,11 @@ import java.util.Optional;
 public class StaffsRepositoryImp implements StaffsService {
     @Autowired
     StaffsRepository staffsRepository;
+
+    @Override
+    public Staff findByUsername(String username) {
+        return staffsRepository.findByUsername(username);
+    }
 
     @Override
     public void deleteById(Integer integer) {

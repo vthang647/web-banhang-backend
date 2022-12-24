@@ -1,27 +1,23 @@
 package com.ky6.assment_java6.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "staffs")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Staff {
     @Id
     @Column(name = "id_staff", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStaff;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_role")
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-    private Roles idRole;
 
     @Column(name = "code", length = 20)
     private String code;
@@ -46,4 +42,8 @@ public class Staff {
 
     @Column(name = "status_staff")
     private Integer statusStaff;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "staffs_roles", joinColumns = @JoinColumn(name = "id_staff"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private Collection<Roles> roles = new ArrayList<>();
 }

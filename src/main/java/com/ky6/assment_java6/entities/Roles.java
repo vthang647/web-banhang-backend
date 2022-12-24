@@ -1,14 +1,17 @@
 package com.ky6.assment_java6.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "roles")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Roles {
     @Id
     @Column(name = "id_role", nullable = false)
@@ -23,4 +26,8 @@ public class Roles {
 
     @Column(name = "status_role")
     private Integer statusRole;
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    private Collection<Staff> stlikes = new ArrayList<>();
 }

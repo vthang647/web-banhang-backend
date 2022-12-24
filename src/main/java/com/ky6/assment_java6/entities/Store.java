@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 public class Store {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_store", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
